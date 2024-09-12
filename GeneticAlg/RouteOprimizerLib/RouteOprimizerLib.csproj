@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>RouteOptimizerLib_VasilchenkoDmitrii</Title>
+    <Description>Library contains methods to build the shortest route through selected cities. Works only with simmetrical distance matrixes.</Description>
+  </PropertyGroup>
+
+</Project>
