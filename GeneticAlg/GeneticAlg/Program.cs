@@ -1,4 +1,6 @@
 ﻿using RouteOptimizerLib;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Diagnostics;
 
 static double[,] arrayInput()
 {
@@ -15,6 +17,22 @@ static double[,] arrayInput()
         }
     }
     return res;
+}
+static double[,] randomMatrix(int size)
+{
+    Random rand = new Random();
+    double[,] arr = new double[size, size];
+    for(int i = 0;i < size; i++)
+    {
+        arr[i, i] = 0;
+        for(int j = 0; j < i; j++)
+        {
+            arr[i,j] = arr[j,i] = rand.Next(1,100);
+
+        }
+        
+    }
+    return arr;
 }
 static List<int> citiesInput()
 {
@@ -66,11 +84,12 @@ static void runAlgorithm(double[,] M, List<int> selectedCities, int populationSi
 
     for(int i = 0;i < epochCount; i++)
     {
-        best  = routeOptimizer.NextIteration();
+        routeOptimizer.NextIteration_Parallel();
         Console.WriteLine($"Epoch#{i + 1}: best length: {best.Distance} on route: {best.ToString()}");
     }
     Console.WriteLine($"Best route:{best} with length: {best.Distance}");
 }
+
 static void runDefault()
 {
     double[,] M =
@@ -92,9 +111,60 @@ static void runDefault()
     Console.WriteLine($"Population size: {populationSize}   Epoch count: {epochCount}");
     runAlgorithm(M, cities, populationSize, epochCount);
 }
+static void runRandom()
+{
+    Console.Write("Cities number: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+    double[,] matrix = randomMatrix(number);
+    printMatrix(matrix);
+    List<int> cities = new List<int>();
+    for(int i= 0;i < number; i++) cities.Add(i);
+    Console.Write("Input population size:");
+    int populationSize = int.Parse(Console.ReadLine());
+    Console.Write("Input epoch count:");
+    int epochCount = int.Parse(Console.ReadLine());
+    runAlgorithm(matrix, cities, populationSize, epochCount);
+}
+static double runRandomForTime(int cities_count, int populationSize, int epochCount)
+{
+    double[,] M = randomMatrix(cities_count);
+    List<int> selectedCities = new List<int>();
+    for (int i = 0; i < cities_count; i++) selectedCities.Add(i);
+    Stopwatch stopwatch = new Stopwatch();
+    RouteOptimizer routeOptimizer = new RouteOptimizer(M.GetLength(0), M, selectedCities);
+    Route best = null;
 
+    stopwatch.Start();
+    routeOptimizer.StartAlgorithm(populationSize);
 
-Console.WriteLine("0 - default; 1 - custom");
+    for (int i = 0; i < epochCount; i++)
+    {
+        best = routeOptimizer.NextIteration();
+    }
+    
+    stopwatch.Stop();
+    double time_notParallel = stopwatch.Elapsed.TotalMilliseconds;
+    double notParallelLen = best.Distance;
+
+    stopwatch = new Stopwatch();
+    routeOptimizer = new RouteOptimizer(M.GetLength(0), M, selectedCities);
+    best = null;
+    stopwatch.Start();
+    routeOptimizer.StartAlgorithm(populationSize);
+
+    for (int i = 0; i < epochCount; i++)
+    {
+        best= routeOptimizer.NextIteration_Parallel();
+    }
+    stopwatch.Stop();
+    double time_Parallel = stopwatch.Elapsed.TotalMilliseconds;
+    double ParallelLen = best.Distance;
+
+    Console.WriteLine($"{notParallelLen} ({time_notParallel}) --- {ParallelLen} ({time_Parallel})");
+    return time_Parallel - time_notParallel;
+}
+
+Console.WriteLine("0 - default; 1 - custom; 2 - random; 3 - time comparison");
 char c = Console.ReadLine()[0];
 switch (c)
 {
@@ -103,6 +173,17 @@ switch (c)
         break;
     case '1':
         runWithInput();
+        break;
+    case '2':
+        runRandom();
+        break;
+    case '3':
+        Console.WriteLine("Not Parallel ---- Parallel");
+        for(int i = 5; i < 1000; i += 100)
+        {
+            Console.WriteLine($"Cities count: {i}");
+            runRandomForTime(i, 1000, 10);
+        }
         break;
 }
 

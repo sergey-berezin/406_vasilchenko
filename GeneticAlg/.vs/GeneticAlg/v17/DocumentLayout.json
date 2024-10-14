@@ -1,0 +1,189 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\currentoptimalroutecontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\currentoptimalroutecontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\routeoprimizerlib\\routeoptimizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|solutionrelative:routeoprimizerlib\\routeoptimizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\matrixcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\matrixcontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\routeoprimizerlib\\routeoprimizerlib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|solutionrelative:routeoprimizerlib\\routeoprimizerlib.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\routeoprimizerlib\\routeoprimizerlib.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{A5E4F75E-5D8B-4B45-9506-FB211A112DA1}|RouteOprimizerLib\\RouteOprimizerLib.csproj|solutionrelative:routeoprimizerlib\\routeoprimizerlib.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\currentoptimalroutecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\currentoptimalroutecontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C82CEDD9-350E-4C1E-A065-A6DD5FEF35FF}|GeneticAlg\\TestApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\geneticalg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C82CEDD9-350E-4C1E-A065-A6DD5FEF35FF}|GeneticAlg\\TestApp.csproj|solutionrelative:geneticalg\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|c:\\dmitrii\\programming\\msu\\msu_7sem_csharp\\geneticalg\\visualisationapp\\matrixcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9871CC2-7A6B-415F-B25A-A6D24F16C18F}|VisualisationApp\\VisualisationApp.csproj|solutionrelative:visualisationapp\\matrixcontrol.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "VisualisationApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "VisualisationApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAF8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T17:43:15.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RouteOptimizer.cs",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOptimizer.cs",
+              "RelativeDocumentMoniker": "RouteOprimizerLib\\RouteOptimizer.cs",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOptimizer.cs",
+              "RelativeToolTip": "RouteOprimizerLib\\RouteOptimizer.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAAJEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T12:54:27.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "VisualisationApp\\MainWindow.xaml",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MainWindow.xaml",
+              "RelativeToolTip": "VisualisationApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-17T17:43:16.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MatrixControl.xaml.cs",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MatrixControl.xaml.cs",
+              "RelativeDocumentMoniker": "VisualisationApp\\MatrixControl.xaml.cs",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MatrixControl.xaml.cs",
+              "RelativeToolTip": "VisualisationApp\\MatrixControl.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T18:28:37.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CurrentOptimalRouteControl.xaml.cs",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\CurrentOptimalRouteControl.xaml.cs",
+              "RelativeDocumentMoniker": "VisualisationApp\\CurrentOptimalRouteControl.xaml.cs",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\CurrentOptimalRouteControl.xaml.cs",
+              "RelativeToolTip": "VisualisationApp\\CurrentOptimalRouteControl.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T18:25:46.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RouteOprimizerLib.csproj",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "RelativeDocumentMoniker": "RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "RelativeToolTip": "RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-09-11T13:16:37.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RouteOprimizerLib",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "RelativeDocumentMoniker": "RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "RelativeToolTip": "RouteOprimizerLib\\RouteOprimizerLib.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-13T10:54:25.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\GeneticAlg\\Program.cs",
+              "RelativeDocumentMoniker": "GeneticAlg\\Program.cs",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\GeneticAlg\\Program.cs",
+              "RelativeToolTip": "GeneticAlg\\Program.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAAALgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-11T12:51:16.547Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CurrentOptimalRouteControl.xaml",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\CurrentOptimalRouteControl.xaml",
+              "RelativeDocumentMoniker": "VisualisationApp\\CurrentOptimalRouteControl.xaml",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\CurrentOptimalRouteControl.xaml",
+              "RelativeToolTip": "VisualisationApp\\CurrentOptimalRouteControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-12T22:42:03.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MatrixControl.xaml",
+              "DocumentMoniker": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MatrixControl.xaml",
+              "RelativeDocumentMoniker": "VisualisationApp\\MatrixControl.xaml",
+              "ToolTip": "C:\\Dmitrii\\Programming\\MSU\\MSU_7sem_cSharp\\GeneticAlg\\VisualisationApp\\MatrixControl.xaml",
+              "RelativeToolTip": "VisualisationApp\\MatrixControl.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-17T18:30:46.023Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
