@@ -61,26 +61,26 @@ namespace VisualisationApp
         {
             _cancellationTokenSource = new CancellationTokenSource();
             var token = _cancellationTokenSource.Token;
-
-            await Task.Run(() =>
+            Task longRunningTask = Task //fixed
+                .Factory.StartNew(() =>
             {
-                // Генетический алгоритм
                 while (!token.IsCancellationRequested)
                 {
                     // Выполнение итераций алгоритма
                     var bestPath = routeOptimizer.Calculate_Parallel();
                     currentEpoch++;
                     // Обновление UI с использованием Dispatcher.Invoke
-                    
-                    if(currentEpoch % 1 == 0)
+
+                    if (currentEpoch % 1 == 0)
                     {
-                        visualisation(bestPath);
+                        Visualisation(bestPath);
                     }
-                    
+
                 }
             }, token);
+                
         }
-        public async void visualisation(Route best)
+        public async void Visualisation(Route best)
         {
             Application.Current.Dispatcher.Invoke(() =>
             {

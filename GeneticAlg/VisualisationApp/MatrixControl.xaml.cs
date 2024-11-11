@@ -38,7 +38,7 @@ namespace VisualisationApp
             MainGrid.Children.Clear();
             data = randomMatrix(count);
             textBoxes = null;
-            if (count > 7)
+            if (count > 7) // not to display too large matrix
             {
                 MainGrid.Children.Add(new Label() { Content = "Too large to display" });
                 return;
