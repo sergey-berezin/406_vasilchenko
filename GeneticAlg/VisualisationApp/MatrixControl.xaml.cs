@@ -92,7 +92,19 @@ namespace VisualisationApp
             }
             return arr;
         }
-
+        public void LoadMatrix(List<List<double>> mat)
+        {
+            this.CitiesNumberTextBox.Text = mat.Count.ToString();   
+            data = new double[mat.Count, mat.Count];
+            for (int i = 0; i < mat.Count; i++)
+            {
+                for(int j= 0;j < mat.Count; j++)
+                {
+                    data[i, j] = mat[i][j];
+                }
+            }
+            CreateMatrixVisualisation(mat.Count);
+        }
         public double[,] GetValues()
         {
             if (textBoxes == null) return data;

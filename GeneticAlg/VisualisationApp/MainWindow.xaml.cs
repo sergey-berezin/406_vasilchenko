@@ -9,6 +9,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RouteOptimizerLib;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.Win32;
+using System.IO;
 
 namespace VisualisationApp
 {
@@ -17,38 +21,56 @@ namespace VisualisationApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        ExperimentFilesHolder experimentFilesHolder;
+
         public MainWindow()
         {
             InitializeComponent();
+            experimentFilesHolder = new ExperimentFilesHolder();
+            experimentFilesHolder.Load();
+            updateOpenOptions();
+            BuildButton.IsEnabled = true;
+            StartButton.IsEnabled = false;
+            StopButton.IsEnabled = false;
         }
         RouteOptimizer routeOptimizer;
         bool AlgInProcess = false;
         public void CreateAlg()
         {
-            this.CurrentBestTextControl.Clear();
-            epochCount = Convert.ToInt32(EpochCountTextBox.Text);
-            int popSize = Convert.ToInt32(PopulationSizeTextBox.Text);
-            double[,] data = this.MatrixControl.GetValues();
-            if (data == null) throw new Exception("Empty matrix");
-            List<int> selectedCities = new List<int>();
-            for (int i = 0; i < data.GetLength(0); i++) selectedCities.Add(i);
-            routeOptimizer = new RouteOptimizer(data.GetLength(0), data, selectedCities);
+               // if (routeOptimizer.CurrentPopulation.Count > 0) return;
+                this.CurrentBestTextControl.Clear();
+                int popSize = Convert.ToInt32(PopulationSizeTextBox.Text);
+                double[,] data = this.MatrixControl.GetValues();
+                if (data == null) throw new Exception("Empty matrix");
+                List<int> selectedCities = new List<int>();
+                for (int i = 0; i < data.GetLength(0); i++) selectedCities.Add(i);
+                routeOptimizer = new RouteOptimizer(data.GetLength(0), data, selectedCities);
+                routeOptimizer.Calculate_Parallel(popSize, 1);
+
+            
         }
 
         public void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (AlgInProcess)return;
+            if (AlgInProcess) return;
+            BuildButton.IsEnabled = false;
             StartButton.IsEnabled = false;
             StopButton.IsEnabled = true;
+            StartAlgorithm();
+            AlgInProcess = true;
+        }
+        private void BuildButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (AlgInProcess) return;
+            BuildButton.IsEnabled = true;
+            StartButton.IsEnabled = true;
+            StopButton.IsEnabled = false;
             try
             {
                 this.CurrentBestTextControl.Clear();
-                CreateAlg();   
-                StartAlgorithm();
-                AlgInProcess = true;
-                
+                CreateAlg();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -67,7 +89,7 @@ namespace VisualisationApp
                 while (!token.IsCancellationRequested)
                 {
                     // Выполнение итераций алгоритма
-                    var bestPath = routeOptimizer.Calculate_Parallel();
+                    var bestPath = routeOptimizer.NextIteration_Parallel();
                     currentEpoch++;
                     // Обновление UI с использованием Dispatcher.Invoke
 
@@ -94,6 +116,7 @@ namespace VisualisationApp
             AlgInProcess = false;
             StartButton.IsEnabled = true;
             StopButton.IsEnabled = false;
+            BuildButton.IsEnabled = true;
         }
 
         private void StopAlgorithm()
@@ -103,5 +126,60 @@ namespace VisualisationApp
                 _cancellationTokenSource.Cancel();
             }
         }
+
+
+        #region File saving/opening 
+        private string SavePopulation(Population pop)
+        {
+            return JsonSerializer.Serialize(pop);
+        }
+        private Population LoadPopulation(string pop)
+        {
+            return JsonSerializer.Deserialize<Population>(pop) as Population;
+        }
+
+        private void SaveButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            if(sfd.ShowDialog() == true)
+            {
+                if (experimentFilesHolder.Contains(sfd.FileName))
+                {
+                    MessageBox.Show("Expiremnt with this name already exists");
+                    return;
+                }
+                using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                {
+                    sw.WriteLine(routeOptimizer.Save());
+                }
+                experimentFilesHolder.AddExperiment(routeOptimizer, sfd.FileName);
+                updateOpenOptions();
+            }
+        }
+        private void LoadRouteOptimizer(RouteOptimizer routeOptimizer)
+        {
+            if (routeOptimizer == null) return;
+            this.routeOptimizer = routeOptimizer;
+            this.MatrixControl.LoadMatrix(routeOptimizer.Matrix);
+            this.PopulationSizeTextBox.Text = routeOptimizer.CurrentPopulation.Count.ToString();
+            this.CurrentBestTextControl.AddNewBestRoute(routeOptimizer.getBestRoute(routeOptimizer.CurrentPopulation));
+            BuildButton.IsEnabled = true;
+            StartButton.IsEnabled = true;
+            StopButton.IsEnabled = false;
+        }
+        private void updateOpenOptions()
+        {
+            OpenMenuControl.Items.Clear();
+            foreach (string name in experimentFilesHolder.Names)
+            {
+                MenuItem newMenuItem = new MenuItem { Header = name};
+                newMenuItem.Click += (o, e) => { LoadRouteOptimizer(experimentFilesHolder.getRouteOptimizer(name)); };
+                OpenMenuControl.Items.Add(newMenuItem);
+            }
+        }
+
+        #endregion
+
+        
     }
 }
