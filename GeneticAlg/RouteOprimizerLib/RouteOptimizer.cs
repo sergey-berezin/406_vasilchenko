@@ -6,14 +6,14 @@ using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 using System.Xml.XPath;
 using static System.Formats.Asn1.AsnWriter;
-
+using System.Text.Json;
 namespace RouteOptimizerLib
 {
     public delegate void OptimalRouteUpdated(Object o, RouteEventArgs e);
 
     public class RouteOptimizer
     {
-        double[,] DistanceMatrix;
+        List<List<Double>> DistanceMatrix;
         int cityCount;
         List<int> selectedCities;
         Population currentPopulation;
@@ -26,13 +26,56 @@ namespace RouteOptimizerLib
         {
             this.cityCount = cityCount;
             this.selectedCities = selectedCities;
-            this.DistanceMatrix = Matrix;
+            this.DistanceMatrix = ConvertToList(Matrix);
+
         }
         public RouteOptimizer()
         {
-            DistanceMatrix = new double[0, 0];
+            DistanceMatrix = new List<List<double>>();
             cityCount = 0;
             selectedCities = new List<int>();
+        }
+
+        private List<List<double>> ConvertToList(double[,] arr)
+        {
+            List<List<double>> list = new List<List<double>>();
+            int n = arr.GetLength(0);
+            int m = arr.GetLength(1);
+            for(int i= 0;i < n; i++)
+            {
+                List<double> tmp = new List<double>();
+                for(int j = 0; j < m; j++)
+                {
+                    tmp.Add(arr[i,j]);
+                }
+                list.Add(tmp);
+            }
+            return list;
+        }
+        public List<List<double>> Matrix
+        {
+            get { return DistanceMatrix; }
+            set { DistanceMatrix = value; }
+        }
+        public int CityCount
+        {
+            get { return cityCount; }
+            set { cityCount = value; }
+        }
+        public Population CurrentPopulation
+        {
+            get { return currentPopulation; }
+            set { currentPopulation = value; }
+        }
+        public List<int> SelectedCities
+        {
+            get { return selectedCities; }
+            set { selectedCities = value; }
+        }
+        public int PopulationSize
+        {
+            get { return populationSize; }
+            set { populationSize = value; }
         }
 
         public Route Calculate(int populationSize = 100, int generationsCount = 5)
@@ -98,6 +141,7 @@ namespace RouteOptimizerLib
 
         public Route Calculate_Parallel(int populationSize = 100, int generationsCount = 5)
         {
+            this.populationSize = populationSize;
             currentPopulation = CreateInitialPopulation(selectedCities, populationSize);
             for (int i = 0; i < generationsCount; i++)
             {
@@ -132,6 +176,7 @@ namespace RouteOptimizerLib
             });
 
             foreach (Route r in kids) resPopulation.Add(r);
+            currentPopulation = resPopulation;
             return resPopulation;
         }
         public Route NextIteration_Parallel()
@@ -148,6 +193,11 @@ namespace RouteOptimizerLib
         }
         #endregion
 
+        public Route getBestRoute(Population p)
+        {
+            List<double> scores = getFitnessScores(p);
+            return getBestRoute(p, scores);
+        }
         private Route getBestRoute(Population p, List<double> scores)
         {
             Route bestRoute = p[scores.IndexOf(scores.Min())];
@@ -230,10 +280,22 @@ namespace RouteOptimizerLib
             return res;
         }
 
+
+        public string  Save()
+        {
+            return JsonSerializer.Serialize(this);
+        }
+        public static RouteOptimizer Load(string json)
+        {
+            RouteOptimizer route = (RouteOptimizer)JsonSerializer.Deserialize<RouteOptimizer>(json);
+            return route;
+        }
     }
     public class Route
     {
-        List<int> cities;
+        public List<int> cities
+        {
+        get; set; }
         public double Distance
         {
             get; set;
@@ -247,14 +309,14 @@ namespace RouteOptimizerLib
         {
             this.cities = cities;
         }
-        public double CalculateDistance(double[,] matrix)
+        public double CalculateDistance(List<List<double>> matrix)
         {
             double length = 0;
             for (int i = 0; i < cities.Count - 1; i++)
             {
-                length += matrix[cities[i], cities[i + 1]];
+                length += matrix[cities[i]][ cities[i + 1]];
             }
-            length += matrix[cities[0], cities.Last()];
+            length += matrix[cities[0]][ cities.Last()];
             Distance = length;
             return Distance;
         }
