@@ -14,27 +14,11 @@ namespace VisualisationApp
     {
         Dictionary<string, RouteOptimizer> _data;
        
-        public static string basePath = "C:\\Dmitrii\\Programming\\MSU\\dataHolder";
-        static ExperimentFilesHolder()
-        {
-            basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dataHolder");
-            if (!Directory.Exists(basePath)) //createDirectory if not exists
-            {
-                Directory.CreateDirectory(basePath);
-            }
-            string runsPath = Path.Combine(basePath, "runs.json");
-            if (!File.Exists(runsPath))
-            {
-                List<string> tmp = new List<string>();
-                using (StreamWriter sw = new StreamWriter(runsPath))
-                {
-                    sw.WriteLine(JsonSerializer.Serialize(tmp));
-                }
-            }
-        }
+        public static string basePath = "";
         public ExperimentFilesHolder()
         {
             _data = new Dictionary<string, RouteOptimizer>();
+            CheckBaseDirectory();
         }
         public void AddExperiment(string name, RouteOptimizer optimizer, string savingPath = "")
         {
@@ -43,14 +27,15 @@ namespace VisualisationApp
         }
         public void AddExperiment(RouteOptimizer optimizer, string savingPath)
         {
-            string name = GetNameFromPath(savingPath);
+            string name = Path.GetFileNameWithoutExtension(savingPath);
             this._data.Add(name, optimizer);
             SaveFile(name, savingPath);
             SaveRunsFile();
         }
         public void SaveFile(string name, string savingPath)
         {
-            string baseNamePath = basePath + $"\\{name}.json";
+            CheckBaseDirectory();
+            string baseNamePath = Path.Combine(basePath, $"{name}.json");
             if (savingPath == baseNamePath) return;
             using (StreamWriter sw = new StreamWriter(baseNamePath))
             {
@@ -59,7 +44,8 @@ namespace VisualisationApp
         }
         public RouteOptimizer LoadFile(string name)
         {
-            using (StreamReader sw = new StreamReader(basePath + $"\\{name}.json"))
+            if (CheckBaseDirectory()) return null;
+            using (StreamReader sw = new StreamReader(Path.Combine(basePath, $"{name}.json")))
             {
                 string s = sw.ReadLine();
                 RouteOptimizer optimizer = RouteOptimizer.Load(s);
@@ -68,18 +54,20 @@ namespace VisualisationApp
         }
         public void SaveRunsFile()
         {
-            using (StreamWriter sw = new StreamWriter(basePath + "\\runs.json"))
+            CheckBaseDirectory();
+            using (StreamWriter sw = new StreamWriter(Path.Combine(basePath, "runs.json")))
             {
                 sw.WriteLine(JsonSerializer.Serialize(_data.Keys.ToList()));
             }
         }
         public void Load()
         {
+            if (CheckBaseDirectory()) return;
             this._data.Clear();
             try
             {
                 List<string> fileNames = new List<string>();
-                using (StreamReader sr = new StreamReader(basePath + "\\runs.json"))
+                using (StreamReader sr = new StreamReader(Path.Combine(basePath, "runs.json")))
                 {
                     fileNames = JsonSerializer.Deserialize<List<string>>(sr.ReadLine()) as List<string>;
                 }
@@ -94,21 +82,6 @@ namespace VisualisationApp
                 SaveRunsFile();
             }
         }
-
-        public bool Contains(string filePath)
-        {
-            string name = GetNameFromPath(filePath);
-            return _data.ContainsKey(name);
-        }
-        private string GetNameFromPath(string filePath)
-        {
-            int index = filePath.LastIndexOf('\\');
-            string name = filePath.Substring(index + 1, filePath.Length - index - 1);
-            index = name.LastIndexOf(".");
-            if(index != -1)name = name.Substring(0, index);
-            return name;
-        }
-
         public List<string> Names
         {
             get { return _data.Keys.ToList(); }
@@ -123,6 +96,33 @@ namespace VisualisationApp
             {
                 return null;
             }
+        }
+        public bool Contains(string filePath)
+        {
+            string name = Path.GetFileNameWithoutExtension(filePath);
+            return _data.ContainsKey(name);
+        }
+
+        private bool CheckBaseDirectory()
+        {
+            bool isChanged = false;
+            basePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dataHolder");
+            if (!Directory.Exists(basePath)) //createDirectory if not exists
+            {
+                Directory.CreateDirectory(basePath);
+                isChanged = true;
+            }
+            string runsPath = Path.Combine(basePath, "runs.json");
+            if (!File.Exists(runsPath))
+            {
+                List<string> tmp = new List<string>();
+                using (StreamWriter sw = new StreamWriter(runsPath))
+                {
+                    sw.WriteLine(JsonSerializer.Serialize(tmp));
+                }
+                isChanged = true;
+            }
+            return isChanged;
         }
     }
 }

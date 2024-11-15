@@ -177,9 +177,10 @@ namespace VisualisationApp
                 OpenMenuControl.Items.Add(newMenuItem);
             }
         }
+        
 
         #endregion
 
-        
+
     }
 }
